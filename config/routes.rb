@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+
+root :to => 'terminal_top#index'
+	resources :terminal_top
+	#resources :lists
+
+get "login" => "terminal_top#login", as: "login"
+get "list" => "terminal_top#list", as: "list"
+get "error" => "terminal_top#error", as: "error"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

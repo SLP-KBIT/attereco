@@ -1,5 +1,64 @@
-<h3 align = light>ようこそ さん
-<br>
+<html>
+<head>
+<title>attereco</title>
+
+<script laguage="JavaScript"><!--
+function changeImg()
+{
+　　　　location.reload();
+}
+// --></script>
+
+</head>
+<body onLoad="setInterval('changeImg()',1000*60)">
+
+<h2 align = light >ようこそhogeさん</h2>
+
+<h2 align = right>
+<script type="text/javascript">
+// 1桁の数字を0埋めで2桁にする
+var toDoubleDigits = function(num) {
+  num += "";
+		if (num.length === 1) {
+				num = "0" + num;
+		}
+		return num;    
+};
+
+// 日付をYYYY/MM/DD HH:DD:MI:SS形式で取得
+var yyyymmddhhmiss = function() {
+var date = new Date();
+var yyyy = date.getFullYear();
+var mm = toDoubleDigits(date.getMonth() + 1);
+var dd = toDoubleDigits(date.getDate());
+var hh = toDoubleDigits(date.getHours());
+var mi = toDoubleDigits(date.getMinutes());
+return yyyy + '/' + mm + '/' + dd + ' ' + hh + ':' + mi;
+};
+document.writeln(yyyymmddhhmiss());
+</script>
+</h2>
+
+<h2 align = light>
 今日参加している人<br>
-</h3>
-<td>
+</h2>
+
+<style type="text/css">
+<!--
+td {
+text-align: center;
+vertical-align: top;
+}
+-->
+</style>
+
+<table border = "2">
+<tr>
+<th>場所</th><th>プロジェクト</th><th>アカウント</th><th>名前</th>
+</tr>
+<tr>
+<td>演習室</td><td>CEM</td><td>hogehoge</td><td>高松太郎</td>
+</tr>
+</table>
+</body>
+</html>
