@@ -1,17 +1,24 @@
-<body>
+<%= form_tag('/lists') do %>
+
   <p>
     日付
-      <input type="date" id="lists_date" name="lists[date]" /> 
+      <input type="date" id="lists_date" name="lists[date]" />
     場所
+      <%= select :lists, :log_at, [["演習室", "0"], ["部室", "1"]], :include_blank => true %>
     プロジェクト
+      <%= select_tag 'lists[project]', options_from_collection_for_select(@Project, :id, :name), :include_blank => true %>
     学年
+      <%= select :lists, :grade, [["B1","B1"],["B2","B2"],["B3","B3"],["B4","B4"],["M1","M1"],["M2","M2"]], :include_blank => true %>
     <br>
     poulencアカウント名
       <%= text_field :lists, :account %>
     名前
       <%= text_field :lists, :name %>
-  </p> 
+    <%= submit_tag "表示" %>
+  </p>
+<% end %>
   <hr> 
+
   <table>
     <tr>
       <th>日付</th>
@@ -20,6 +27,14 @@
       <th>アカウント</th>
       <th>名前</th>
     </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+
   </table>
-</body>
+
 
