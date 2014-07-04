@@ -3,7 +3,6 @@ class ListsController < ApplicationController
     @Project = Project.all
   end
   def lists
-    @Project = Project.all
   end
   def creat
     
