@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: belongings
+#
+#  id         :integer          not null, primary key
+#  member_id  :integer
+#  project_id :integer
+#  deleted_at :datetime
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
