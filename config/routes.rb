@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :members
+  devise_for :members, controllers: {
+    sessions:       "members/sessions",
+    registrations:  "members/registrations",
+    passwords:      "members/passwords"
+  }
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
