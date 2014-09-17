@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  root :to => 'attends#index'
+  resources :attends
+
   devise_for :members, controllers: {
     sessions:       "members/sessions",
     registrations:  "members/registrations",
