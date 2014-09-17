@@ -1,0 +1,17 @@
+// Mailアドレスを保持しないため意味がない?
+//  
+h2 Forgot your password?
+
+.row
+  .col-md-5
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      devise_error_messages!
+
+      .form-group
+        = f.label :account
+        br
+        = f.text_field :account, autofocus: true
+
+      = f.submit "Submit"
+
+= render "members/shared/links"

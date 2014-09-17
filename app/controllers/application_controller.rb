@@ -5,9 +5,10 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   private
+
   # サインインしていなければログインページへ
   def sign_in_required
-    redirect_to_new_member_session_url unless member_signed_in?
+    redirect_to new_member_session_path unless member_signed_in?
   end
 
   # ログイン前に指定したURLを把握しておき、ログイン後に移動

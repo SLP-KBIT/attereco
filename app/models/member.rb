@@ -33,6 +33,8 @@ class Member < ActiveRecord::Base
   validates :account, presence: true, uniqueness: true
   validates_presence_of :email, if: :email_required?
 
+  has_many :attends
+  
   def email_required?
     false
   end
