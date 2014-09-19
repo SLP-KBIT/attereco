@@ -2,9 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).ready ->  
-  $("#date").datepicker(
-    todayHighlight: true,
-    format: "yyyy.mm.dd"
-  )
+# $(document).ready ->  
+#   $("#date").datepicker(
+#     todayHighlight: true,
+#     format: "yyyy.mm.dd"
+#   )
 
