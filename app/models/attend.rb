@@ -12,7 +12,7 @@
 #
 
 class Attend < ActiveRecord::Base
-  belongs_to :member, foreign_key: :member_id, class_name: Member
+  belongs_to :member
 
   validates :date, :member_id, presence: true
 end
