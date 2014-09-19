@@ -2,8 +2,11 @@
 <html>
 <head>
   <title>Attereco</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -15,19 +18,23 @@
       <% end %>
     <% else %>
       <%= menu_group :pull => :right do %>
-        <%= menu_item "Sign up", new_member_registration_path %>
         <%= menu_item "Login", new_member_session_path %>
       <% end %>
     <% end %>
   <% end %>
   
-  <% if notice %>
-    <p class="alert alert-notice"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-error"><%= alert %></p>
-  <% end %>
-  <%= yield %>
-  
+  <!-- <% if notice %> -->
+  <!--   <p class="alert alert-notice"><%= notice %></p> -->
+  <!-- <% end %> -->
+  <!-- <% if alert %> -->
+  <!--   <p class="alert alert-error"><%= alert %></p> -->
+  <!-- <% end %> -->
+  <div class="container">
+    <div class="row">
+      <div class="span9">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

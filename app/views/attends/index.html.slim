@@ -1,6 +1,10 @@
 h1 出席一覧
-  
-table class="table table-striped"
+hr  
+
+= form_tag action: :index, remote: true do
+  = text_field_tag :date
+  = submit_tag '検索'
+table class="table"
   thead
     tr
       th 日付
