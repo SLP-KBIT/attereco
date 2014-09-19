@@ -1,0 +1,15 @@
+h1 出席一覧
+  
+table class="table table-striped"
+  thead
+    tr
+      th 日付
+      th ユーザ名
+      th 場所
+  tbody
+    - @attends.each do |a|
+      tr
+        td = a.date.strftime("%Y-%m-%d")
+        td = a.member.account
+        td = a.log_at
+      
