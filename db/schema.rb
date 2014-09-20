@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140915115547) do
+ActiveRecord::Schema.define(version: 20140917171358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attends", force: true do |t|
+    t.datetime "date"
+    t.integer  "member_id"
+    t.integer  "log_at"
+    t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "belongings", force: true do |t|
     t.integer  "member_id"
@@ -45,8 +54,16 @@ ActiveRecord::Schema.define(version: 20140915115547) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "student_number"
+    t.string   "card_idm"
+    t.string   "name"
+    t.string   "account"
+    t.string   "grade"
+    t.boolean  "is_admin"
+    t.datetime "deleted_at"
   end
 
+  add_index "members", ["account"], name: "index_members_on_account", unique: true, using: :btree
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
   add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
 
