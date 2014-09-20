@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root :to => 'attends#index'
-  resources :attends
+  resources :attends do
+    collection do
+      get :search
+    end
+  end
 
   devise_for :members, controllers: {
     sessions:       "members/sessions",

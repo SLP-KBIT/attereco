@@ -2,10 +2,9 @@ h1 出席一覧
 hr  
 
 .col-md-6
-  = form_tag "/attend/search", remote: true, class: "input-group date" do
-    span class="input-group"
-      = label :search, :Date
-      = text_field_tag 'search' ,nil,  class: "form-control datepicker"
+  = form_tag :search_attends, method: :get, class: "input-group date" do
+    .input-group
+      = text_field_tag "date",nil,  class: "form-control datepicker"
     = submit_tag '検索', class: "btn btn-primary"
 table class="table"
   thead
