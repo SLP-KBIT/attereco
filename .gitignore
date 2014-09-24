@@ -25,3 +25,4 @@ Ignore bundler config.
 .bundle
 config/database.yml
 .envrc
+.direnv/
