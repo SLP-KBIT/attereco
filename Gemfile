@@ -44,6 +44,19 @@ group :development do
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'pre-commit'
+  gem 'guard-rspec', require: false
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'database_cleaner'
 end
 
 gem "paranoia", "~>2.0"
@@ -56,3 +69,4 @@ gem 'slim'
 gem 'slim-rails'
 gem 'devise'
 gem 'active_attr'
+gem 'draper'
