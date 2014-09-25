@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140920072623) do
+ActiveRecord::Schema.define(version: 20140925033328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "attends", force: true do |t|
-    t.date     "date",       null: false
+    t.datetime "date",       null: false
     t.integer  "member_id"
     t.integer  "log_at"
     t.datetime "deleted_at"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140920072623) do
     t.string   "grade"
     t.boolean  "is_admin"
     t.datetime "deleted_at"
+    t.integer  "status"
   end
 
   add_index "members", ["account"], name: "index_members_on_account", unique: true, using: :btree

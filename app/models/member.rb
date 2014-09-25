@@ -22,6 +22,7 @@
 #  grade                  :string(255)
 #  is_admin               :boolean
 #  deleted_at             :datetime
+#  status                 :integer
 #
 
 class Member < ActiveRecord::Base
@@ -34,8 +35,26 @@ class Member < ActiveRecord::Base
   validates_presence_of :email, if: :email_required?
 
   has_many :attends
-  
+
   def email_required?
     false
+  end
+
+  module Status
+    InRoom = 1
+    BeOut  = 0
+  end
+
+  def status_name
+    return "在室" if status == Status::InRoom
+    return "不在" if status == Status::BeOut
+  end
+
+  def in_room?
+    status == Status::InRoom
+  end
+
+  def be_out?
+    status == Status::BeOut
   end
 end

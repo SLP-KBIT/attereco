@@ -3,7 +3,7 @@
 # Table name: attends
 #
 #  id         :integer          not null, primary key
-#  date       :datetime
+#  date       :datetime         not null
 #  member_id  :integer
 #  log_at     :integer
 #  deleted_at :datetime
