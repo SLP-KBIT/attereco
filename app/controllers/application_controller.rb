@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  #  protect_from_forgery with: :exception
+  protect_from_forgery with: :exception
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   def index
@@ -16,8 +16,8 @@ class ApplicationController < ActionController::Base
   end
 
   # ログイン前に指定したURLを把握しておき、ログイン後に移動
-
-  def sotre_location
+  ## 動作してない?
+  def store_location
     return unless request.get?
     if ( request.path != "members/sign_in" &&
          request.path != "members/sign_up" &&
