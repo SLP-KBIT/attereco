@@ -1,5 +1,5 @@
 h1 出席一覧
-hr  
+hr
 
 .col-md-6
   = form_tag :search_attends, method: :get, class: "input-group date" do
@@ -11,11 +11,12 @@ table class="table"
     tr
       th 日付
       th ユーザ名
+      th 動作
       th 場所
   tbody
     - @attends.each do |a|
       tr
         td = a.date.strftime("%Y-%m-%d")
         td = a.member.account
+        td = a.message
         td = a.log_at
-      

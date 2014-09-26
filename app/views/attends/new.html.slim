@@ -1,0 +1,21 @@
+h2 在室者一覧
+
+.span3.bs-docs-sidebar
+  .nav.navbar-right.bs-docs-sidenav
+    - member = current_member.decorate
+    h4 = member.status_message
+    = form_for @attend do |form|
+      = form.submit current_member.next_action, class: "btn btn-info"
+
+.col-md-6
+  hr
+  table.table.table-bordered
+    thead
+      tr
+        th 学籍番号
+        th 名前
+    tbody
+      - @members.each do |member|
+        tr
+          td = member.student_number
+          td = member.name

@@ -12,9 +12,12 @@
 <body>
   <%= nav_bar static: :top, brand: "Attereco", responsive: true do %>
     <% if member_signed_in? %>
+      <%= menu_group do %>
+        <%= menu_item raw(glyph('list-alt'))+" Log", attends_path %>
+      <% end %>
       <%= menu_group :pull => :right do %>
-        <%= menu_item "Edit profile", edit_member_registration_path %>
-        <%= menu_item "Logout", destroy_member_session_path, method: :delete %>
+        <%= menu_item raw(glyph(:user))+" Edit profile", edit_member_registration_path %>
+        <%= menu_item raw(glyph('log-out'))+" Logout", destroy_member_session_path, method: :delete %>
       <% end %>
     <% else %>
       <%= menu_group :pull => :right do %>
@@ -22,7 +25,7 @@
       <% end %>
     <% end %>
   <% end %>
-  
+
   <!-- <% if notice %> -->
   <!--   <p class="alert alert-notice"><%= notice %></p> -->
   <!-- <% end %> -->

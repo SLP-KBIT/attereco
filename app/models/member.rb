@@ -47,7 +47,7 @@ class Member < ActiveRecord::Base
 
   def status_name
     return "在室" if status == Status::InRoom
-    return "不在" if status == Status::BeOut
+    return "退室" if status == Status::BeOut
   end
 
   def in_room?
@@ -56,5 +56,15 @@ class Member < ActiveRecord::Base
 
   def be_out?
     status == Status::BeOut
+  end
+
+  def next_action
+    return "退室" if status == Status::InRoom
+    return "入室" if status == Status::BeOut
+  end
+
+  def change_status
+    return self.status = Status::BeOut  unless self.be_out?
+    return self.status = Status::InRoom unless self.in_room?
   end
 end

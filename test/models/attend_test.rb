@@ -9,6 +9,7 @@
 #  deleted_at :datetime
 #  created_at :datetime
 #  updated_at :datetime
+#  status     :integer
 #
 
 require 'test_helper'
