@@ -1,15 +1,26 @@
-h1 出席一覧
-  
-table.table.table-striped
-  thead
-    tr
-      th 日付
-      th ユーザ名
-      th 場所
-  tbody
-    - @attends.each do |a|
-      tr
-        td = a.date.strftime("%Y-%m-%d")
-        td = a.member.account
-        td = a.log_at
-      
+h1 出席記録
+hr
+
+.row
+  .col-md-6
+    = form_tag :search_attends, method: :get, class: "input-group date" do
+      .input-group
+        = text_field_tag "date",nil,  class: "form-control datepicker"
+      = submit_tag '検索', class: "btn btn-primary"
+.row
+  .col-md-6.center-block
+    table class="table"
+      thead
+        tr
+          th 日付
+          th ユーザ名
+          th 動作
+          th 場所
+      tbody
+        - @attends.each do |a|
+          - a = a.decorate
+          tr class=a.line_class
+            td = a.date.strftime("%Y-%m-%d")
+            td = a.member.account
+            td = a.status
+            td = a.log_at

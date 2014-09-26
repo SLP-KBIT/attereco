@@ -22,6 +22,7 @@
 #  grade                  :string(255)
 #  is_admin               :boolean
 #  deleted_at             :datetime
+#  status                 :integer
 #
 
 require 'test_helper'
