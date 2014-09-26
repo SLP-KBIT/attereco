@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: attends
+#
+#  id         :integer          not null, primary key
+#  date       :datetime
+#  member_id  :integer
+#  log_at     :integer
+#  deleted_at :datetime
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2014-09-18 02:13:58
+  member_id: 1
+  log_at: 1
+  deleted_at: 2014-09-18 02:13:58
+
+two:
+  date: 2014-09-18 02:13:58
+  member_id: 1
+  log_at: 1
+  deleted_at: 2014-09-18 02:13:58
