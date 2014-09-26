@@ -5,7 +5,7 @@ h2 在室者一覧
     - member = current_member.decorate
     h4 = member.status_message
     = form_for @attend do |form|
-      = form.submit current_member.next_action, class: "btn btn-info"
+      = form.submit member.next_action, class: "btn #{member.button_class}"
 
 .col-md-6
   hr

@@ -22,8 +22,13 @@ class Attend < ActiveRecord::Base
     In = 1
   end
 
-  def message
-    return "退室" if status == Status::Out
-    return "入室" if status == Status::In
+  module LogAt
+    CircleRoom = 0
+    SeminarRoom = 1
   end
+
+  # def message
+  #   return "退室" if status == Status::Out
+  #   return "入室" if status == Status::In
+  # end
 end
