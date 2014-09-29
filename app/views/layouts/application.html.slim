@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title
+      | Attereco
+    - #= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    - #= javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  body
+    = nav_bar static: :top, brand: "Attereco", responsive: true do
+      - if member_signed_in?
+        = menu_group do
+          = menu_item raw(glyph('list-alt'))+" Log", attends_path
+        = menu_group :pull => :right do
+          = menu_item raw(glyph(:user))+" Edit profile", edit_member_registration_path
+          = menu_item raw(glyph('log-out'))+" Logout", destroy_member_session_path, method: :delete
+      - else
+        = menu_group :pull => :right do
+          = menu_item "Login", new_member_session_path
+    .container
+      .row
+        .span9
+          = yield
