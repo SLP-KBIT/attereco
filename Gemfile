@@ -46,6 +46,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'pre-commit'
   gem 'guard-rspec', require: false
+  gem 'pry-byebug'
 end
 
 group :development, :test do
