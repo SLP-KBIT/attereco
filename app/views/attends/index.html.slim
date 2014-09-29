@@ -19,7 +19,7 @@ hr
       tbody
         - @attends.each do |a|
           - a = a.decorate
-          tr class=a.line_class
+          tr class="#{a.line_class}"
             td = a.date.strftime("%Y-%m-%d")
             td = a.member.account
             td = a.status

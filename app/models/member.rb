@@ -36,6 +36,10 @@ class Member < ActiveRecord::Base
 
   has_many :attends
 
+  def status_
+    self.attends.last.status
+  end
+
   def email_required?
     false
   end
