@@ -11,15 +11,12 @@ class AttendsController < ApplicationController
   end
 
   def new
-    @attend = Attend.new
-    @members = Member.where(status: Member::Status::InRoom)
+    @members = Member.select { |member|  member.status == Member::Status::InRoom }
   end
 
   def create
-    @attend = current_member.attends.build(log_at: 1, date: Time.now)
-    current_member.change_status
-    current_member.save!
-    @attend.status = current_member.status
+    next_status = current_member.next_status
+    @attend = current_member.attends.build(log_at: 1, date: Time.now, status: next_status)
     @attend.save!
     redirect_to root_path
   end
@@ -29,10 +26,4 @@ class AttendsController < ApplicationController
     @attends = Attend.date_is(date)
     render "index"
   end
-
-  private
-
-  # def attend_params
-  #   params.require(:attend).permit()
-  # end
 end

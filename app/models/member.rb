@@ -36,7 +36,7 @@ class Member < ActiveRecord::Base
 
   has_many :attends
 
-  def status_
+  def status
     self.attends.last.status
   end
 
@@ -49,11 +49,6 @@ class Member < ActiveRecord::Base
     BeOut  = 0
   end
 
-  # def status_name
-  #   return "在室" if status == Status::InRoom
-  #   return "退室" if status == Status::BeOut
-  # end
-
   def in_room?
     status == Status::InRoom
   end
@@ -62,13 +57,8 @@ class Member < ActiveRecord::Base
     status == Status::BeOut
   end
 
-  # def next_action
-  #   return "退室" if status == Status::InRoom
-  #   return "入室" if status == Status::BeOut
-  # end
-
-  def change_status
-    return self.status = Status::BeOut  unless self.be_out?
-    return self.status = Status::InRoom unless self.in_room?
+  def next_status
+    return Status::InRoom if be_out?
+    return Status::BeOut if in_room?
   end
 end
