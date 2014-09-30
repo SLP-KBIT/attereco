@@ -16,13 +16,11 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  student_number         :string(255)
-#  card_idm               :string(255)
 #  name                   :string(255)
 #  account                :string(255)
 #  grade                  :string(255)
 #  is_admin               :boolean
 #  deleted_at             :datetime
-#  status                 :integer
 #
 
 class Member < ActiveRecord::Base
@@ -35,6 +33,7 @@ class Member < ActiveRecord::Base
   validates_presence_of :email, if: :email_required?
 
   has_many :attends
+  has_many :cards
 
   def status
     self.attends.last.status

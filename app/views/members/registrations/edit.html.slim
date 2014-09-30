@@ -12,9 +12,24 @@ h2 Edit = resource_name.to_s.humanize
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           Currently waiting confirmation for: = resource.unconfirmed_account?
       .form-group
+        = f.label :name
+        br
+        = f.text_field :name, class: "form-control"
+      .form-group
+        = f.label :name
+        br
+        = f.text_field :name, class: "form-control"
+      .form-group
+        = f.label :student_number
+        br
+        = f.text_field :student_number, class: "form-control"
+      .form-group
+        = f.label :is_admin
+        = f.check_box :is_admin, class: "checkbox"
+      .form-group
         = f.label :password
         i
-          |(leave blank if you don't want to change it)
+          | 変更しない場合、空白のままにしてください
         br
         = f.password_field :password, class: "form-control", autocomplete: "off"
       .form-group
@@ -24,7 +39,7 @@ h2 Edit = resource_name.to_s.humanize
       .form-group
         = f.label :current_password
         i
-          | (we need your current password to confirm your changes)
+          |
         br
         = f.password_field :current_password, autocomplete: "off"
 

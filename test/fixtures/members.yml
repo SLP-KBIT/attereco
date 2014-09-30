@@ -16,13 +16,11 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  student_number         :string(255)
-#  card_idm               :string(255)
 #  name                   :string(255)
 #  account                :string(255)
 #  grade                  :string(255)
 #  is_admin               :boolean
 #  deleted_at             :datetime
-#  status                 :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
