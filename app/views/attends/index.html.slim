@@ -13,14 +13,14 @@ hr
       thead
         tr
           th 日付
-          th ユーザ名
+          th 氏名
           th 動作
           th 場所
       tbody
         - @attends.each do |a|
           - a = a.decorate
           tr class="#{a.line_class}"
-            td = a.date.strftime("%Y-%m-%d")
-            td = a.member.account
+            td = a.date
+            td = a.member.name
             td = a.status
             td = a.log_at

@@ -23,4 +23,8 @@ class AttendDecorator < Draper::Decorator
     return "退室" if object.status == Attend::Status::Out
     return "入室" if object.status == Attend::Status::In
   end
+
+  def date
+    object.date.strftime("%Y-%m-%d(#{%w(日 月 火 水 木 金 土)[object.date.wday]}) %H:%M:%S")
+  end
 end
