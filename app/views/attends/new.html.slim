@@ -11,13 +11,15 @@ h2 在室者一覧
 
 .col-md-6
   hr
-  table.table.table-bordered
+  table.table.table-horizontal
     thead
       tr
         th 学籍番号
+        th 学年
         th 名前
     tbody
       - @members.each do |member|
         tr
           td = member.student_number
+          td = member.grade
           td = member.name

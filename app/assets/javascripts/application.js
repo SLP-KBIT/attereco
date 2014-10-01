@@ -14,10 +14,5 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require moment
-//= require bootstrap-datetimepicker
+//= require jquery.datetimepicker
 //= require_tree .
-var data = {'data-date-format': 'YYYY.MM.DD'};
-$(function(){
-  $('.datepicker').attr(data);
-  $('.datepicker').datetimepicker();
-});

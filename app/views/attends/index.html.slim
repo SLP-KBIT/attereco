@@ -4,8 +4,9 @@ hr
 .row
   .col-md-6
     = form_tag :search_attends, method: :get, class: "input-group date" do
-      .input-group
-        = text_field_tag "date",nil,  class: "form-control datepicker"
+      .form-group
+        = label nil, :date
+        = text_field_tag "date",nil,  class: "form-control datetimepicker"
       = submit_tag '検索', class: "btn btn-primary"
 .row
   .col-md-6.center-block
@@ -24,3 +25,6 @@ hr
             td = a.member.name
             td = a.status
             td = a.log_at
+coffee:
+  $ ->
+    $('.datetimepicker').datetimepicker()
