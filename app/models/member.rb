@@ -36,8 +36,6 @@ class Member < ActiveRecord::Base
 
   has_many :attends
 
-  scope :in_room, -> { joins(:attends).where("attends.status = ?", Status::InRoom).order(created_at: :desc).limit(1) }
-
   def status
     self.attends.last.status
   end

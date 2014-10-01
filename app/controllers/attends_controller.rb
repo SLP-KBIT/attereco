@@ -2,7 +2,7 @@ class AttendsController < ApplicationController
   before_action :sign_in_required
 
   def index
-    @attends = Attend.order(date: :desc)
+    @attends = Attend.order("date DESC")
 
     respond_to do |format|
       format.html
@@ -11,7 +11,7 @@ class AttendsController < ApplicationController
   end
 
   def new
-    @members = Member.in_room
+    @members = Member.select { |member|  member.status == Member::Status::InRoom }
   end
 
   def create
