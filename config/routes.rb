@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     registrations:  "members/registrations",
     passwords:      "members/passwords"
   }
+  namespace "admin" do
+    resources :members
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
