@@ -1,0 +1,19 @@
+h2 ユーザ管理
+
+.row
+  .col-md-6
+    table.table
+      thead
+        tr
+          th 学籍番号
+          th 氏名
+      tbody
+        - @members.each do |member|
+          - member = member.decorate
+          tr
+            td = member.student_number
+            td = link_to "#{member.name}", edit_admin_member_path(member)
+            td
+              = form_for @attend do |f|
+                = f.hidden_field :member_id, value: member.id
+                = f.submit member.next_action, class: "btn #{member.button_class}"

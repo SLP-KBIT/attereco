@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     redirect_to new_member_session_path unless member_signed_in?
   end
 
+  def admin_required
+    redirect_to root_path unless current_member.is_admin?
+  end
+
   # ログイン前に指定したURLを把握しておき、ログイン後に移動
   ## 動作してない?
   def store_location
@@ -31,11 +35,12 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     session[:previous_url] || root_path
   end
-  
+
   protected
 
   # deviseのparameterで account を取得
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :account
+    devise_parameter_sanitizer.for(:sign_up).concat([:account, :name, :is_admin, :student_number, :grade])
+    devise_parameter_sanitizer.for(:account_update).concat([:account, :name, :is_admin, :student_number, :grade])
   end
 end

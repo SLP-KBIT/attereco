@@ -16,27 +16,28 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  student_number         :string(255)
-#  card_idm               :string(255)
 #  name                   :string(255)
 #  account                :string(255)
 #  grade                  :string(255)
 #  is_admin               :boolean
 #  deleted_at             :datetime
-#  status                 :integer
 #
 
 class Member < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable
 
   validates :account, presence: true, uniqueness: true
-  validates_presence_of :email, if: :email_required?
+  validates :grade, inclusion: { in: ["B1", "B2", "B3", "B4", "M1", "M2", "TR", "GS"] }
+  # validates_presence_of :email, if: :email_required?
 
   has_many :attends
+  has_many :cards
 
   def status
+    return Status::BeOut if self.attends.last.nil?
     self.attends.last.status
   end
 

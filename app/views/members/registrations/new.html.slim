@@ -1,18 +1,31 @@
 h2 Sign up
 
 .row
-  .col-md-5  
+  .col-md-5
     = form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form") do |f|
       .= devise_error_messages!
-
       .form-group
         = f.label :account
         br
         = f.text_field :account, class: "form-control", autofocus: true
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          Currently waiting confirmation for: = resource.unconfirmed_account?
+      .form-group
+        = f.label :name
+        br
+        = f.text_field :name, class: "form-control", placeholder:"高松太郎"
+      .form-group
+        = f.label :student_number
+        br
+        = f.text_field :student_number, class: "form-control", placeholder:"s00t000"
+      .form-group
+        = f.label :grade
+        br
+        = f.text_field :grade, class: "form-control", placeholder:"B4"
 
       .form-group
         = f.label :password
-        - if @validatable 
+        - if @validatable
           i = @minimum_password_length
           | characters minimum
           br
@@ -24,5 +37,5 @@ h2 Sign up
         = f.password_field :password_confirmation, class: "form-control", autocomplete: "off"
 
       = f.submit "Sign up"
-  
+
 = render "members/shared/links"

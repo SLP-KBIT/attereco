@@ -11,14 +11,20 @@ class AttendsController < ApplicationController
   end
 
   def new
+    @attend = Attend.new
     @members = Member.select { |member|  member.status == Member::Status::InRoom }
   end
 
   def create
-    next_status = current_member.next_status
-    @attend = current_member.attends.build(log_at: 1, date: Time.now, status: next_status)
+    @member = Member.where(id: params[:attend][:member_id]).first
+    next_status = @member.next_status
+    @attend = @member.attends.build(log_at: 1, date: Time.now, status: next_status)
     @attend.save!
-    redirect_to root_path
+    if current_member.id == @member.id
+      redirect_to root_path
+    else
+      redirect_to admin_members_path
+    end
   end
 
   def search

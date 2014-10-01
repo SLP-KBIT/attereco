@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140929094015) do
+ActiveRecord::Schema.define(version: 20140930115013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 20140929094015) do
     t.datetime "updated_at"
   end
 
+  create_table "cards", force: true do |t|
+    t.integer  "member_id"
+    t.string   "idm"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cards", ["member_id"], name: "index_cards_on_member_id", using: :btree
+
   create_table "members", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -56,7 +66,6 @@ ActiveRecord::Schema.define(version: 20140929094015) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "student_number"
-    t.string   "card_idm"
     t.string   "name"
     t.string   "account"
     t.string   "grade"
@@ -65,7 +74,6 @@ ActiveRecord::Schema.define(version: 20140929094015) do
   end
 
   add_index "members", ["account"], name: "index_members_on_account", unique: true, using: :btree
-  add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
   add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
 
   create_table "projects", force: true do |t|

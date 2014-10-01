@@ -14,6 +14,8 @@ html
         = menu_group do
           = menu_item raw(glyph('list-alt'))+" Log", attends_path
         = menu_group :pull => :right do
+          - if current_member.is_admin
+            = menu_item raw(glyph(:wrench))+" Admin", admin_members_path
           = menu_item raw(glyph(:user))+" Edit profile", edit_member_registration_path
           = menu_item raw(glyph('log-out'))+" Logout", destroy_member_session_path, method: :delete
       - else
